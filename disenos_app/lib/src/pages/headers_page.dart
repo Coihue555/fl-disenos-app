@@ -1,3 +1,4 @@
+import 'package:disenos_app/src/widgets/headers.dart';
 import 'package:flutter/material.dart';
 
 class HeadersPage extends StatelessWidget {
@@ -5,10 +6,9 @@ class HeadersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Hello friend'),
-      ),
+    return Scaffold(
+      body:  HeaderWaveGradient(),
+      
     );
   }
 }
