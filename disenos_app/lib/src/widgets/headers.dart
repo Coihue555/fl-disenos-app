@@ -78,7 +78,7 @@ class HeaderTriangular extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       child: CustomPaint(
-        painter: _HeadedCurvoPainter(
+        painter: _HeadedTriangularPainter(
 
         ),
       ),
