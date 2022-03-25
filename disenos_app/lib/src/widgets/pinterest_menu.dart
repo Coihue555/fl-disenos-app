@@ -24,13 +24,12 @@ class PinterestMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ChangeNotifierProvider(
-        create: ( _ ) => _MenuModel(),
-        child: _PinterestMenuBackground(
-          child: _MenuItems(items),
-         ),
-      ));
+    return ChangeNotifierProvider(
+      create: ( _ ) => _MenuModel(),
+      child: _PinterestMenuBackground(
+        child: _MenuItems(items),
+       ),
+    );
   }
 }
 
@@ -90,12 +89,15 @@ class _PinterestMenuButton extends StatelessWidget {
     final itemSeleccionado = Provider.of<_MenuModel>(context).itemSeleccionado;
 
     return GestureDetector(
-      onTap: (Provider.of<_MenuModel>(context).itemSeleccionado){},
+      onTap: (){
+        Provider.of<_MenuModel>(context, listen: false).itemSeleccionado = index;
+        item.onPressed();
+      },
       behavior: HitTestBehavior.translucent,
       child: Container(
         child: Icon(
           item.icon,
-          size: 30,
+          size: ( itemSeleccionado == index ) ? 30 : 20,
           color: ( itemSeleccionado == index ) ? Colors.black : Colors.blueGrey,
           ),
       ),
