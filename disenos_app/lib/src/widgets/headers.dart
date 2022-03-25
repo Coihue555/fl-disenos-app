@@ -274,7 +274,7 @@ class IconHeader extends StatelessWidget {
     final Color colorBlanco = Colors.white.withOpacity(0.7);
     return Stack(
       children: [
-        _IconHeaderBackground(color1: this.color1, color2: this.color2,),
+        _IconHeaderBackground(color1: color1, color2: color2,),
         Positioned(
           top: -50,
           left: -70,

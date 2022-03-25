@@ -28,7 +28,7 @@ class PinterestMenu extends StatelessWidget {
   //   PinterestButton(icon: Icons.supervised_user_circle, onPressed: (){ }),
   // ];
 
-  PinterestMenu({
+  const PinterestMenu({
     this.mostrar         = true,
     this.backgroundColor = Colors.white,
     this.activeColor     = Colors.black,
@@ -141,9 +141,9 @@ class _MenuModel extends ChangeNotifier{
   Color activeColor     = Colors.black;
   Color inactiveColor   = Colors.blueGrey;
   
-  int get itemSeleccionado => this._itemSeleccionado;
+  int get itemSeleccionado => _itemSeleccionado;
   set itemSeleccionado( int index ){
-    this._itemSeleccionado = index;
+    _itemSeleccionado = index;
     notifyListeners();
   }
 }

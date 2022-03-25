@@ -125,7 +125,7 @@ class _PinterestItem extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
           color: Colors.blue,
-          borderRadius: const BorderRadius.all(Radius.circular(30))),
+          borderRadius: BorderRadius.all(Radius.circular(30))),
       child: Center(
         child: CircleAvatar(
           backgroundColor: Colors.white,
@@ -140,10 +140,10 @@ class _MenuModel with ChangeNotifier{
 
   bool _mostrar = true;
   
-  bool get mostrar => this._mostrar;
+  bool get mostrar => _mostrar;
 
   set mostrar(bool valor) {
-    this._mostrar = valor;
+    _mostrar = valor;
     notifyListeners();
   }
 }
