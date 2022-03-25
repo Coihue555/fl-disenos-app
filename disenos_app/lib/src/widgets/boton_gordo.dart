@@ -17,7 +17,13 @@ class _BotonGordoBackground extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 100,
-      color: Colors.red,
+      margin: const EdgeInsets.all(20),
+      decoration: const BoxDecoration(
+        color: Colors.red,
+        boxShadow: <BoxShadow>[
+          BoxShadow()
+        ]
+      ),
     );
   }
 }
