@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class PinterestPage extends StatelessWidget {
+  const PinterestPage({Key? key}) : super(key: key);
+
    
   
   
@@ -19,6 +21,7 @@ class PinterestPage extends StatelessWidget {
             child: Container(
               width: widthPantalla,
               child: Align(
+                alignment: Alignment.bottomCenter,
                 child: PinterestMenu()
               )
             )
