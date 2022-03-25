@@ -254,20 +254,40 @@ class _HeadedWaveGradientPainter extends CustomPainter{
 
 class IconHeader extends StatelessWidget {
 
+  final IconData icon;
+  final String titulo;
+  final String subtitulo;
+  final Color color1;
+  final Color color2;
+
+  const IconHeader({
+    required this.icon,
+    required this.titulo,
+    required this.subtitulo,
+    this.color1 = Colors.blue,
+    this.color2 = Colors.blueGrey
+    });
+
+
   @override
   Widget build(BuildContext context) {
+    final Color colorBlanco = Colors.white.withOpacity(0.7);
     return Stack(
       children: [
-        const _IconHeaderBackground(),
+        _IconHeaderBackground(color1: this.color1, color2: this.color2,),
         Positioned(
           top: -50,
           left: -70,
-          child: FaIcon(FontAwesomeIcons.plus, size: 250, color: Colors.white.withOpacity(0.2),)
+          child: FaIcon( icon, size: 250, color: Colors.white.withOpacity(0.2),)
         ),
         Column(
-          children: const [
-            SizedBox(height: 80,),
-            Text('Haz solicitado', style: TextStyle( fontSize: 20))
+          children: [
+            const SizedBox(height: 80, width: double.infinity),
+            Text( subtitulo, style: TextStyle( fontSize: 20, color: colorBlanco)),
+            const SizedBox(height: 20,),
+            Text( titulo, style: TextStyle( fontSize: 40, fontWeight: FontWeight.bold, color: colorBlanco)),
+            const SizedBox(height: 20,),
+            FaIcon( icon, size: 80, color: Colors.white,)
           ],)
       ],
       );
@@ -275,23 +295,28 @@ class IconHeader extends StatelessWidget {
 }
 
 class _IconHeaderBackground extends StatelessWidget {
+  
+  final Color color1;
+  final Color color2;
+
   const _IconHeaderBackground({
-    Key? key,
-  }) : super(key: key);
+    required this.color1,
+    required this.color2
+    });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       height: 300,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80)),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(80)),
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color(0xff526bf6),
-            Color(0xff67acf2)
+            color1,
+            color2
           ]
         )
       ),
