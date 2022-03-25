@@ -24,8 +24,8 @@ class PinterestGrid extends StatelessWidget {
       gridDelegate: SliverWovenGridDelegate.count(
         crossAxisCount: 2,
         pattern: [
-          WovenGridTile(1),
-          WovenGridTile(
+          const WovenGridTile(1),
+          const WovenGridTile(
             5 / 7,
             crossAxisRatio: 0.9,
             alignment: AlignmentDirectional.centerEnd,
@@ -49,9 +49,9 @@ class _PinterestItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.blue,
-          borderRadius: BorderRadius.all(Radius.circular(30))),
+          borderRadius: const BorderRadius.all(Radius.circular(30))),
       child: Center(
         child: CircleAvatar(
           backgroundColor: Colors.white,

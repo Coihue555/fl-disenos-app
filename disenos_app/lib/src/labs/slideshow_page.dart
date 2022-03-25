@@ -38,7 +38,7 @@ class _Dots extends StatelessWidget {
       height: 70,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: const [
           _Dot(0),
           _Dot(1),
           _Dot(2)
@@ -52,7 +52,7 @@ class _Dot extends StatelessWidget {
   
   final int index;
 
-  _Dot(this.index);
+  const _Dot(this.index);
 
 
   @override
@@ -105,7 +105,7 @@ class _SlidesState extends State<_Slides> {
     return Container(
       child: PageView(
         controller: pageViewController,
-        children: [
+        children: const [
           _Slide('assets/svgs/slide-1.svg'),
           _Slide('assets/svgs/slide-2.svg'),
           _Slide('assets/svgs/slide-3.svg')
@@ -118,7 +118,7 @@ class _SlidesState extends State<_Slides> {
 class _Slide extends StatelessWidget {
 
   final String svg;
-  _Slide( this.svg );
+  const _Slide( this.svg );
 
   @override
   Widget build(BuildContext context) {

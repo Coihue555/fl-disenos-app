@@ -9,7 +9,7 @@ class RadialProgress extends StatefulWidget {
   final double grosorPrimario;
   final double grosorSecundario;
 
-  RadialProgress({
+  const RadialProgress({
     required this.porcentaje,
     this.colorPrimario   = Colors.blue,
     this.colorSecundario = Colors.grey,

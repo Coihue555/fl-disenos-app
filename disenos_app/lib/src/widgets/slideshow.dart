@@ -12,7 +12,7 @@ class Slideshow extends StatelessWidget {
   final double bulletPrimario;
   final double bulletSecundario;
 
-  Slideshow({
+  const Slideshow({
     required this.slides,
     this.puntosArriba     = false,
     this.colorPrimario    = Colors.red,
@@ -95,7 +95,7 @@ class _Dot extends StatelessWidget {
   
   final int index;
 
-  _Dot(
+  const _Dot(
     this.index
   );
 
@@ -133,7 +133,7 @@ class _Slides extends StatefulWidget {
   
   final List<Widget> slides;
 
-  _Slides(this.slides);
+  const _Slides(this.slides);
   @override
   State<_Slides> createState() => _SlidesState();
 }
@@ -170,7 +170,7 @@ class _SlidesState extends State<_Slides> {
 class _Slide extends StatelessWidget {
 
   final Widget slide;
-  _Slide( this.slide );
+  const _Slide( this.slide );
 
   @override
   Widget build(BuildContext context) {

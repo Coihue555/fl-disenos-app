@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PinterestButton{
   final Function() onPressed;
@@ -14,29 +15,34 @@ class PinterestButton{
 class PinterestMenu extends StatelessWidget {
 
   final List<PinterestButton> items = [
-    PinterestButton(icon: Icons.pie_chart, onPressed: (){print('Icon pie_chart');}),
-    PinterestButton(icon: Icons.search, onPressed: (){print('Icon search');}),
-    PinterestButton(icon: Icons.mail, onPressed: (){print('Icon mail');}),
-    PinterestButton(icon: Icons.supervised_user_circle, onPressed: (){print('Icon user');}),
+    PinterestButton(icon: Icons.pie_chart, onPressed: (){ }),
+    PinterestButton(icon: Icons.search, onPressed: (){ }),
+    PinterestButton(icon: Icons.mail, onPressed: (){ }),
+    PinterestButton(icon: Icons.supervised_user_circle, onPressed: (){ }),
   ];
 
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: _PinterestMenuBackground());
+      child: ChangeNotifierProvider(
+        create: ( _ ) => _MenuModel(),
+        child: _PinterestMenuBackground(
+          child: _MenuItems(items),
+         ),
+      ));
   }
 }
 
 class _PinterestMenuBackground extends StatelessWidget {
 
   final Widget child;
-  const _PinterestMenuBackground();
+  const _PinterestMenuBackground({required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-
+      child: child,
       width: 250,
       height: 60,
       decoration: BoxDecoration(
@@ -58,7 +64,7 @@ class _MenuItems extends StatelessWidget {
 
   final List<PinterestButton> menuItems;
 
-  _MenuItems( this.menuItems );
+  const _MenuItems( this.menuItems );
 
   @override
   Widget build(BuildContext context) {
@@ -80,16 +86,30 @@ class _PinterestMenuButton extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+
+    final itemSeleccionado = Provider.of<_MenuModel>(context).itemSeleccionado;
+
     return GestureDetector(
-      onTap: item.onPressed,
+      onTap: (Provider.of<_MenuModel>(context).itemSeleccionado){},
       behavior: HitTestBehavior.translucent,
       child: Container(
         child: Icon(
           item.icon,
           size: 30,
-          color: Colors.blueGrey,
+          color: ( itemSeleccionado == index ) ? Colors.black : Colors.blueGrey,
           ),
       ),
     );
+  }
+}
+
+
+class _MenuModel extends ChangeNotifier{
+  int _itemSeleccionado = 0;
+  
+  int get itemSeleccionado => this._itemSeleccionado;
+  set itemSeleccionado( int index ){
+    this._itemSeleccionado = index;
+    notifyListeners();
   }
 }

@@ -78,7 +78,7 @@ class _CircularProgressPageState extends State<CircularProgressPage> with Single
 
 class _MiRadialProgress extends CustomPainter{
 
-  final porcentaje;
+  final double porcentaje;
 
   _MiRadialProgress(this.porcentaje);
 
