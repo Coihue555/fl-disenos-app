@@ -37,7 +37,7 @@ class _CuadradoAnimadoState extends State<CuadradoAnimado> with SingleTickerProv
       vsync: this,
       duration: const Duration(milliseconds: 4000)
     );
-    rotacion = Tween(begin: 0.0, end: 4.0*Math.pi).animate(
+    rotacion = Tween(begin: 0.0, end: 0.0).animate(
       CurvedAnimation(
         parent: controller,
         curve: Curves.easeOut
@@ -65,7 +65,7 @@ class _CuadradoAnimadoState extends State<CuadradoAnimado> with SingleTickerProv
         )
     );
 
-    agrandar = Tween(begin: 0.5, end: 2.0).animate(controller);
+    agrandar = Tween(begin: 0.5, end: 8.0).animate(controller);
     
 
     controller.addListener(() {
