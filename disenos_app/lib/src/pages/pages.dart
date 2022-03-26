@@ -7,3 +7,5 @@ export 'package:disenos_app/src/pages/headers_page.dart';
 export 'package:disenos_app/src/pages/animaciones_page.dart';
 export 'package:disenos_app/src/pages/emergency_pages.dart';
 export 'package:disenos_app/src/pages/slivers_list_page.dart';
+export 'package:disenos_app/src/pages/launcher_pages.dart';
+

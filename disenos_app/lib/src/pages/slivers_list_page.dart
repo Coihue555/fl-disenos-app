@@ -39,7 +39,7 @@ class _BotonNewList extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffed6762)),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>( const RoundedRectangleBorder(borderRadius: (const BorderRadius.only(topLeft: Radius.circular(50))))),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>( const RoundedRectangleBorder(borderRadius: (BorderRadius.only(topLeft: Radius.circular(50))))),
         ),
         onPressed: () {
           return;
