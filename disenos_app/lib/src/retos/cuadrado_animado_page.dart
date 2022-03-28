@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class CuadradoAnimadoPage extends StatelessWidget {
   
   @override
@@ -14,8 +13,6 @@ class CuadradoAnimadoPage extends StatelessWidget {
 }
 
 class _CuadradoAnimado extends StatefulWidget {
-  
-
   @override
   State<_CuadradoAnimado> createState() => _CuadradoAnimadoState();
 }

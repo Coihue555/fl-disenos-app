@@ -1,5 +1,5 @@
-//import 'package:disenos_app/src/pages/transicion_forward_page.dart';
 import 'package:disenos_app/src/theme/theme.dart';
+import 'package:disenos_app/src/transition/pagina1.dart';
 import 'package:flutter/material.dart';
 import 'package:disenos_app/src/pages/pages.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: currentTheme,
       debugShowCheckedModeBanner: false,
       title: 'Diseños App',
-      home: const LauncherScreen(),
+      home:  DemoScreen(),
     );
   }
 }
