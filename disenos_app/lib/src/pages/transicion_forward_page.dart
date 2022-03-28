@@ -47,15 +47,15 @@ class _CuboBlancoState extends State<_CuboBlanco> with SingleTickerProviderState
       );
     
 
-    tamano = Tween(begin: 1.0, end: 15.0).animate(controller);
+    tamano = Tween(begin: 1.0, end: 1.5).animate(controller);
     moverDerecha = Tween(begin: -100.0, end: 300.0).animate(controller);
-    moverArriba = Tween(begin: -100.0, end: -300.0).animate(controller);
-    opacidad = Tween(begin: 1.0, end: 0.4).animate(controller);
+    moverArriba = Tween(begin: -100.0, end: -100.0).animate(controller);
+    opacidad = Tween(begin: 1.0, end: 0.0).animate(controller);
 
     controller.addListener(() {
         if(controller.status == AnimationStatus.completed){
-          controller.reverse();
-          Navigator.push(context, _crearRuta() );
+          controller.reset();
+          
         }
     });
 
@@ -76,6 +76,7 @@ class _CuboBlancoState extends State<_CuboBlanco> with SingleTickerProviderState
       animation: controller,
       child: GestureDetector(
         onTap:() {
+          Navigator.push(context, _crearRuta() );
           controller.forward();
         },
         child: _Rectangulo()
@@ -117,13 +118,13 @@ class _Rectangulo extends StatelessWidget {
 
     return PageRouteBuilder(
       pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) => Pagina2Page(),
-      transitionDuration: const Duration(milliseconds: 1000),
+      transitionDuration: const Duration(milliseconds: 600),
       transitionsBuilder: ( context, animation, secondaryAnimation, child ) {
 
-        final curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.easeInOut );
+        final curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.easeOut );
 
         return SlideTransition(
-          position: Tween<Offset>(begin: Offset(1.0, 0.0), end: Offset.zero ).animate(curvedAnimation),
+          position: Tween<Offset>(begin: Offset(-1.0, 0.0), end: Offset.zero ).animate(animation),
           child: child,
         );
 
