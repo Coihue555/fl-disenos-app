@@ -1,18 +1,23 @@
-import 'package:disenos_app/src/transition/pagina2_page.dart';
 import 'package:flutter/material.dart';
+import 'package:disenos_app/src/transition/pagina2_page.dart';
 
-class DemoScreen extends StatelessWidget { 
 
+
+class DemoScreen extends StatefulWidget { 
+
+  @override
+  State<DemoScreen> createState() => _DemoScreenState();
+}
+
+class _DemoScreenState extends State<DemoScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: Colors.blue,
       body:  Center(
-        child: GestureDetector(
-          onTap: (){
-            
-          },
-          child: _CuboBlanco())
+        child: _CuboBlanco(
+
+        )
       ),
     );
   }
@@ -33,26 +38,26 @@ class _CuboBlancoState extends State<_CuboBlanco> with SingleTickerProviderState
 
   @override
   void initState() {
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(
-        milliseconds: 400
-      )
-    );
+    
+      controller = AnimationController(
+        vsync: this,
+        duration: const Duration(
+          milliseconds: 600
+        )
+      );
+    
 
     tamano = Tween(begin: 1.0, end: 15.0).animate(controller);
     moverDerecha = Tween(begin: -100.0, end: 300.0).animate(controller);
     moverArriba = Tween(begin: -100.0, end: -300.0).animate(controller);
     opacidad = Tween(begin: 1.0, end: 0.4).animate(controller);
-    controller.addListener(() { 
-      if(controller.status == AnimationStatus.completed){
-        controller.reverse();
-        Navigator.push(context, _crearRuta() );
-      }
+
+    controller.addListener(() {
+        if(controller.status == AnimationStatus.completed){
+          controller.reverse();
+          Navigator.push(context, _crearRuta() );
+        }
     });
-
-    
-
 
     super.initState();
   }
@@ -66,10 +71,15 @@ class _CuboBlancoState extends State<_CuboBlanco> with SingleTickerProviderState
   @override
   Widget build(BuildContext context) {
 
-    controller.forward();
+    
     return AnimatedBuilder(
       animation: controller,
-      child: _Rectangulo(),
+      child: GestureDetector(
+        onTap:() {
+          controller.forward();
+        },
+        child: _Rectangulo()
+      ),
       builder: (BuildContext context, Widget? childRectangulo) {
         return Transform.translate(
           offset: Offset(0,moverArriba.value),
@@ -107,7 +117,7 @@ class _Rectangulo extends StatelessWidget {
 
     return PageRouteBuilder(
       pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) => Pagina2Page(),
-      transitionDuration: const Duration(milliseconds: 610),
+      transitionDuration: const Duration(milliseconds: 1000),
       transitionsBuilder: ( context, animation, secondaryAnimation, child ) {
 
         final curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.easeInOut );

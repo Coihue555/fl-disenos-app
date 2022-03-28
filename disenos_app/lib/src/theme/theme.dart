@@ -15,13 +15,17 @@ class ThemeChanger with ChangeNotifier {
       case 1: //light
         _darkTheme = false;
         _customTheme = false;
-        _currentTheme = ThemeData.light();
+        _currentTheme = ThemeData.light().copyWith(
+          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.green.shade900)
+        );
         break;
 
       case 2: //dark
         _darkTheme = true;
         _customTheme = false;
-        _currentTheme = ThemeData.dark();
+        _currentTheme = ThemeData.dark().copyWith(
+          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.blue.shade900)
+        );
         break;
 
       case 3: //custom
@@ -41,9 +45,12 @@ class ThemeChanger with ChangeNotifier {
     _darkTheme = value;
 
     if (value) {
-      _currentTheme = ThemeData.dark();
+      _currentTheme = ThemeData.dark().copyWith( 
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.blueGrey)
+      );
     } else {
-      _currentTheme = ThemeData.light();
+      _currentTheme = ThemeData.light().copyWith( 
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.red.shade300));
     }
     notifyListeners();
   }
@@ -54,10 +61,10 @@ class ThemeChanger with ChangeNotifier {
 
     if (value) {
       _currentTheme = ThemeData.dark().copyWith(
-        //colorScheme.secondary: Color(0xff48a0eb);
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.yellow.shade300),
         primaryColor: Colors.white,
         scaffoldBackgroundColor: const Color(0xff16202b),
-        textTheme: const TextTheme(bodyText1: TextStyle(color: Colors.white)),
+        textTheme: const TextTheme(bodyText1: TextStyle(color: Colors.black87)),
       );
     } else {
       _currentTheme = ThemeData.light();

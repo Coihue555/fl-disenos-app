@@ -8,9 +8,15 @@ import 'package:disenos_app/src/theme/theme.dart';
 class LauncherScreen extends StatelessWidget {
   const LauncherScreen({Key? key}) : super(key: key);
 
+  
+
   @override
   Widget build(BuildContext context) {
+    
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
+    
     return Scaffold(
+      backgroundColor: appTheme.colorScheme.secondary,
       appBar: AppBar(
         title: const Text('Diseños en Flutter'),
       ),

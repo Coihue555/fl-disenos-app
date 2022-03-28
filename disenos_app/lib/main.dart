@@ -1,8 +1,8 @@
-import 'package:disenos_app/src/theme/theme.dart';
-import 'package:disenos_app/src/transition/pagina1.dart';
 import 'package:flutter/material.dart';
-import 'package:disenos_app/src/pages/pages.dart';
 import 'package:provider/provider.dart';
+import 'package:disenos_app/src/pages/pages.dart';
+import 'package:disenos_app/src/theme/theme.dart';
+
 
 void main() => runApp(
     ChangeNotifierProvider(create: (_) => ThemeChanger(0), child: MyApp()));
@@ -16,7 +16,17 @@ class MyApp extends StatelessWidget {
       theme: currentTheme,
       debugShowCheckedModeBanner: false,
       title: 'Diseños App',
-      home:  DemoScreen(),
+      //home:  LauncherScreen(),
+      home: OrientationBuilder(
+        builder: (BuildContext context, Orientation orientation ){
+          print('Orientacion: $orientation');
+          return Container(
+            child: LauncherScreen(
+              
+            ),
+          );
+        }
+        ),
     );
   }
 }
