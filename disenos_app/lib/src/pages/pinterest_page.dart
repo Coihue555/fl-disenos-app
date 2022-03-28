@@ -28,17 +28,22 @@ class PinterestPage extends StatelessWidget {
 class _PinterestMenuLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final widthPantalla = MediaQuery.of(context).size.width;
+    double widthPantalla = MediaQuery.of(context).size.width;
     final mostrar = Provider.of<_MenuModel>(context).mostrar;
     final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
+
+    if (widthPantalla > 500){
+      widthPantalla = widthPantalla-300;
+    }
 
     return Positioned(
         bottom: 30,
         child: Container(
             width: widthPantalla,
-            child: Align(
-                alignment: Alignment.bottomCenter,
-                child: PinterestMenu(
+            child: Row(
+              children: [
+                Spacer(),
+                PinterestMenu(
                   mostrar: mostrar,
                   backgroundColor: appTheme.scaffoldBackgroundColor,
                   activeColor: appTheme.colorScheme.secondary,
@@ -49,7 +54,12 @@ class _PinterestMenuLocation extends StatelessWidget {
                     PinterestButton(
                         icon: Icons.supervised_user_circle, onPressed: () {}),
                   ],
-                ))));
+                ),
+                Spacer(),
+              ],
+            )
+          )
+        );
   }
 }
 
@@ -85,11 +95,19 @@ class _PinterestGridState extends State<PinterestGrid> {
 
   @override
   Widget build(BuildContext context) {
+
+    int count;
+    if(MediaQuery.of(context).size.width > 500){
+      count = 3;
+    } else {
+      count = 2;
+    }
+
     return GridView.custom(
       controller: controller,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       gridDelegate: SliverWovenGridDelegate.count(
-        crossAxisCount: 2,
+        crossAxisCount: count,
         pattern: [
           const WovenGridTile(1),
           const WovenGridTile(

@@ -21,11 +21,10 @@ class SlideshowPage extends StatelessWidget {
     ];
 
     return Scaffold(
-        body: Column(
-      children: [
-        
-      ],
-    ));
+        body: (isLarge)
+              ? Column(children: children)
+              : Row(children: children)
+    );
   }
 }
 
