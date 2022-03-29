@@ -29,17 +29,17 @@ class MyApp extends StatelessWidget {
       theme: currentTheme,
       debugShowCheckedModeBanner: false,
       title: 'Diseños App',
-      home:  DemoScreen(),
-      // home: OrientationBuilder(
-      //   builder: (BuildContext context, Orientation orientation ){
-      //    final screenSize = MediaQuery.of(context).size;
-      //    if(screenSize.width>500){
-      //      return LauncherTabletScreen();
-      //    } else {
-      //      return LauncherScreen();
-      //    }
-      //   }
-      //   ),
+      //home:  DemoScreen(),
+      home: OrientationBuilder(
+        builder: (BuildContext context, Orientation orientation ){
+         final screenSize = MediaQuery.of(context).size;
+         if(screenSize.width>500){
+           return LauncherTabletScreen();
+         } else {
+           return LauncherScreen();
+         }
+        }
+        ),
     );
   }
 }

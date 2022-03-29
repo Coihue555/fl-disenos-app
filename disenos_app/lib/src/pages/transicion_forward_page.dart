@@ -42,22 +42,29 @@ class _CuboBlancoState extends State<_CuboBlanco> with SingleTickerProviderState
       controller = AnimationController(
         vsync: this,
         duration: const Duration(
-          milliseconds: 600
+          milliseconds: 500
         )
       );
+
+
     
 
-    tamano = Tween(begin: 1.0, end: 1.5).animate(controller);
+    tamano = Tween(begin: 1.0, end: 2.0).animate(controller);
     moverDerecha = Tween(begin: -100.0, end: 300.0).animate(controller);
     moverArriba = Tween(begin: -100.0, end: -100.0).animate(controller);
-    opacidad = Tween(begin: 1.0, end: 0.0).animate(controller);
+    opacidad = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
+        parent: controller,
+        curve: const Interval(0.0, 1.0, curve: Curves.easeOut)
+        ));
 
     controller.addListener(() {
         if(controller.status == AnimationStatus.completed){
+          Navigator.push(context, _crearRuta() );
           controller.reset();
-          
         }
     });
+
+
 
     super.initState();
   }
@@ -76,7 +83,7 @@ class _CuboBlancoState extends State<_CuboBlanco> with SingleTickerProviderState
       animation: controller,
       child: GestureDetector(
         onTap:() {
-          Navigator.push(context, _crearRuta() );
+          
           controller.forward();
         },
         child: _Rectangulo()
@@ -87,7 +94,7 @@ class _CuboBlancoState extends State<_CuboBlanco> with SingleTickerProviderState
           child: Transform.translate(
             offset: Offset(moverDerecha.value,400),
             child: Transform.scale(
-              scaleY: tamano.value,
+              scale: tamano.value,
               child: Opacity(
                 opacity: opacidad.value,
                 child: childRectangulo,
@@ -118,13 +125,13 @@ class _Rectangulo extends StatelessWidget {
 
     return PageRouteBuilder(
       pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) => Pagina2Page(),
-      transitionDuration: const Duration(milliseconds: 600),
+      transitionDuration: const Duration(milliseconds: 400),
       transitionsBuilder: ( context, animation, secondaryAnimation, child ) {
 
         final curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.easeOut );
 
         return SlideTransition(
-          position: Tween<Offset>(begin: Offset(-1.0, 0.0), end: Offset.zero ).animate(animation),
+          position: Tween<Offset>(begin: Offset(-1.0, 0.0), end: Offset.zero ).animate(curvedAnimation),
           child: child,
         );
 
